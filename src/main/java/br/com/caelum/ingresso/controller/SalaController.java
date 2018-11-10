@@ -1,8 +1,10 @@
 package br.com.caelum.ingresso.controller;
 
+
 import java.util.Optional;
 
 import javax.validation.Valid;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,9 +17,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+
 import br.com.caelum.ingresso.dao.SalaDao;
 import br.com.caelum.ingresso.dao.SessaoDao;
 import br.com.caelum.ingresso.model.Sala;
+
 
 /**
  * Created by nando on 03/03/17.
@@ -75,10 +79,14 @@ public class SalaController {
     	
 
         Sala sala = salaDao.findOne(id);
+        
+        
 
         ModelAndView view = new ModelAndView("sessao/lista");
         view.addObject("sessoes", sessaoDao.buscaSessoesDaSala(sala));
         view.addObject("sala", sala);
+        
+        view.addObject("sessoes", sessaoDao.buscaSessoesDaSala(sala));
 
         return view;
     }
@@ -101,4 +109,9 @@ public class SalaController {
     public void delete(@PathVariable("id") Integer id){
         salaDao.delete(id);
     }
+    
+    
+    
+    
+    
 }
